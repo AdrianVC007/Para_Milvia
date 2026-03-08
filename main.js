@@ -112,27 +112,80 @@ photoContent.forEach((item) => {
 /* ══════════════════════════════════════════
    INTRO BUTTONS
 ══════════════════════════════════════════ */
-yesBtn.addEventListener("click", () => {
+function enterUniverse() {
   intro.classList.add("hidden");
-  gift.classList.remove("hidden");
-});
-
-["mouseenter", "click", "touchstart"].forEach((ev) => {
-  noBtn.addEventListener(ev, (e) => {
-    e.preventDefault();
-    const card = noBtn.closest(".glass-card").getBoundingClientRect();
-    const maxX = card.width  - noBtn.offsetWidth  - 20;
-    noBtn.style.position = "relative";
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top  = (Math.random() * 120 - 60) + "px";
-  });
-});
-
-openGift.addEventListener("click", () => {
   gift.classList.add("hidden");
   universe.classList.remove("hidden");
   if (!window._solarInit) { createSolarSystem(); window._solarInit = true; }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+yesBtn.addEventListener("click", enterUniverse);
+
+yesBtn.style.position = "relative";
+yesBtn.style.zIndex = "3";
+
+function positionNoBtn(x, y) {
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+}
+
+function moveNoBtn() {
+  const container = noBtn.closest(".actions");
+  const box = container.getBoundingClientRect();
+  const btnW = noBtn.offsetWidth;
+  const btnH = noBtn.offsetHeight;
+  const maxX = Math.max(0, box.width - btnW);
+  const maxY = Math.max(0, box.height - btnH);
+  const yesRect = yesBtn.getBoundingClientRect();
+  const yesX = yesRect.left - box.left;
+  const yesY = yesRect.top - box.top;
+  const yesW = yesRect.width;
+  const yesH = yesRect.height;
+
+  let targetX = maxX;
+  let targetY = maxY / 2;
+
+  for (let i = 0; i < 24; i += 1) {
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    const overlap = !(
+      x + btnW < yesX ||
+      x > yesX + yesW ||
+      y + btnH < yesY ||
+      y > yesY + yesH
+    );
+
+    if (!overlap) {
+      targetX = x;
+      targetY = y;
+      break;
+    }
+  }
+
+  positionNoBtn(targetX, targetY);
+}
+
+function initNoBtnPosition() {
+  const container = noBtn.closest(".actions");
+  const box = container.getBoundingClientRect();
+  const x = Math.max(0, box.width - noBtn.offsetWidth);
+  const y = Math.max(0, (box.height - noBtn.offsetHeight) / 2);
+  positionNoBtn(x, y);
+}
+
+["mouseenter", "pointerdown", "touchstart", "focus", "click"].forEach((ev) => {
+  noBtn.addEventListener(ev, (e) => {
+    e.preventDefault();
+    moveNoBtn();
+  });
 });
+
+window.addEventListener("resize", initNoBtnPosition);
+initNoBtnPosition();
+
+openGift.addEventListener("click", enterUniverse);
 
 likesNav.addEventListener("click", () => {
   document.getElementById("likes").scrollIntoView({ behavior: "smooth" });
