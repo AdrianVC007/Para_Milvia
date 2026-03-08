@@ -112,27 +112,59 @@ photoContent.forEach((item) => {
 /* ══════════════════════════════════════════
    INTRO BUTTONS
 ══════════════════════════════════════════ */
-yesBtn.addEventListener("click", () => {
+function enterUniverse() {
   intro.classList.add("hidden");
-  gift.classList.remove("hidden");
-});
-
-["mouseenter", "click", "touchstart"].forEach((ev) => {
-  noBtn.addEventListener(ev, (e) => {
-    e.preventDefault();
-    const card = noBtn.closest(".glass-card").getBoundingClientRect();
-    const maxX = card.width  - noBtn.offsetWidth  - 20;
-    noBtn.style.position = "relative";
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top  = (Math.random() * 120 - 60) + "px";
-  });
-});
-
-openGift.addEventListener("click", () => {
   gift.classList.add("hidden");
   universe.classList.remove("hidden");
   if (!window._solarInit) { createSolarSystem(); window._solarInit = true; }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+yesBtn.addEventListener("click", enterUniverse);
+yesBtn.addEventListener("touchend", (e) => { e.preventDefault(); enterUniverse(); }, { passive: false });
+
+yesBtn.style.position = "relative";
+yesBtn.style.zIndex = "3";
+
+function positionNoBtn(x, y) {
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+}
+
+function moveNoBtn() {
+  const container = noBtn.closest(".actions");
+  const box = container.getBoundingClientRect();
+  const btnW = noBtn.offsetWidth;
+  const btnH = noBtn.offsetHeight;
+  const minX = Math.max(0, box.width * 0.52);
+  const maxX = Math.max(minX, box.width - btnW);
+  const maxY = Math.max(0, box.height - btnH);
+
+  const x = minX + Math.random() * (maxX - minX || 1);
+  const y = Math.random() * maxY;
+  positionNoBtn(x, y);
+}
+
+function initNoBtnPosition() {
+  const container = noBtn.closest(".actions");
+  const box = container.getBoundingClientRect();
+  const x = Math.max(box.width * 0.7, box.width - noBtn.offsetWidth);
+  const y = Math.max(0, (box.height - noBtn.offsetHeight) / 2);
+  positionNoBtn(x, y);
+}
+
+["mouseenter", "pointerdown", "touchstart", "focus", "click"].forEach((ev) => {
+  noBtn.addEventListener(ev, (e) => {
+    e.preventDefault();
+    moveNoBtn();
+  });
 });
+
+window.addEventListener("resize", initNoBtnPosition);
+initNoBtnPosition();
+
+openGift.addEventListener("click", enterUniverse);
 
 likesNav.addEventListener("click", () => {
   document.getElementById("likes").scrollIntoView({ behavior: "smooth" });
