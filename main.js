@@ -118,15 +118,6 @@ function enterUniverse() {
   universe.classList.remove("hidden");
   if (!window._solarInit) { createSolarSystem(); window._solarInit = true; }
   window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-yesBtn.addEventListener("click", enterUniverse);
-
-function moveNoBtn() {
-  const container = noBtn.closest(".actions");
-  const box = container.getBoundingClientRect();
-  const maxX = Math.max(0, box.width - noBtn.offsetWidth);
-  const maxY = Math.max(0, box.height - noBtn.offsetHeight);
 
   noBtn.style.position = "absolute";
   noBtn.style.left = `${Math.random() * maxX}px`;
