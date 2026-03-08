@@ -114,7 +114,10 @@ photoContent.forEach((item) => {
 ══════════════════════════════════════════ */
 yesBtn.addEventListener("click", () => {
   intro.classList.add("hidden");
-  gift.classList.remove("hidden");
+  gift.classList.add("hidden");
+  universe.classList.remove("hidden");
+  if (!window._solarInit) { createSolarSystem(); window._solarInit = true; }
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 ["mouseenter", "click", "touchstart"].forEach((ev) => {
