@@ -84,11 +84,18 @@ p {
 }
 
 .actions {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 20px;
+  min-height: 56px;
+}
+
+#noBtn {
+  z-index: 2;
 }
 
 .btn {
