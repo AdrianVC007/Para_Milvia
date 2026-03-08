@@ -121,7 +121,6 @@ function enterUniverse() {
 }
 
 yesBtn.addEventListener("click", enterUniverse);
-yesBtn.addEventListener("touchend", (e) => { e.preventDefault(); enterUniverse(); }, { passive: false });
 
 yesBtn.style.position = "relative";
 yesBtn.style.zIndex = "3";
@@ -137,19 +136,41 @@ function moveNoBtn() {
   const box = container.getBoundingClientRect();
   const btnW = noBtn.offsetWidth;
   const btnH = noBtn.offsetHeight;
-  const minX = Math.max(0, box.width * 0.52);
-  const maxX = Math.max(minX, box.width - btnW);
+  const maxX = Math.max(0, box.width - btnW);
   const maxY = Math.max(0, box.height - btnH);
+  const yesRect = yesBtn.getBoundingClientRect();
+  const yesX = yesRect.left - box.left;
+  const yesY = yesRect.top - box.top;
+  const yesW = yesRect.width;
+  const yesH = yesRect.height;
 
-  const x = minX + Math.random() * (maxX - minX || 1);
-  const y = Math.random() * maxY;
-  positionNoBtn(x, y);
+  let targetX = maxX;
+  let targetY = maxY / 2;
+
+  for (let i = 0; i < 24; i += 1) {
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    const overlap = !(
+      x + btnW < yesX ||
+      x > yesX + yesW ||
+      y + btnH < yesY ||
+      y > yesY + yesH
+    );
+
+    if (!overlap) {
+      targetX = x;
+      targetY = y;
+      break;
+    }
+  }
+
+  positionNoBtn(targetX, targetY);
 }
 
 function initNoBtnPosition() {
   const container = noBtn.closest(".actions");
   const box = container.getBoundingClientRect();
-  const x = Math.max(box.width * 0.7, box.width - noBtn.offsetWidth);
+  const x = Math.max(0, box.width - noBtn.offsetWidth);
   const y = Math.max(0, (box.height - noBtn.offsetHeight) / 2);
   positionNoBtn(x, y);
 }
