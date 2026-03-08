@@ -112,30 +112,26 @@ photoContent.forEach((item) => {
 /* ══════════════════════════════════════════
    INTRO BUTTONS
 ══════════════════════════════════════════ */
-yesBtn.addEventListener("click", () => {
+function enterUniverse() {
   intro.classList.add("hidden");
   gift.classList.add("hidden");
   universe.classList.remove("hidden");
   if (!window._solarInit) { createSolarSystem(); window._solarInit = true; }
   window.scrollTo({ top: 0, behavior: "smooth" });
-});
 
-["mouseenter", "click", "touchstart"].forEach((ev) => {
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${Math.random() * maxX}px`;
+  noBtn.style.top = `${Math.random() * maxY}px`;
+}
+
+["mouseenter", "pointerdown", "touchstart", "focus", "click"].forEach((ev) => {
   noBtn.addEventListener(ev, (e) => {
     e.preventDefault();
-    const card = noBtn.closest(".glass-card").getBoundingClientRect();
-    const maxX = card.width  - noBtn.offsetWidth  - 20;
-    noBtn.style.position = "relative";
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top  = (Math.random() * 120 - 60) + "px";
+    moveNoBtn();
   });
 });
 
-openGift.addEventListener("click", () => {
-  gift.classList.add("hidden");
-  universe.classList.remove("hidden");
-  if (!window._solarInit) { createSolarSystem(); window._solarInit = true; }
-});
+openGift.addEventListener("click", enterUniverse);
 
 likesNav.addEventListener("click", () => {
   document.getElementById("likes").scrollIntoView({ behavior: "smooth" });
