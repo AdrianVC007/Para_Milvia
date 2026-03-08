@@ -20,7 +20,7 @@ const planetData = [
   {
     name: "Mercurio", emoji: "☿", color: "#c8a882",
     radius: 0.50, distance: 5.8,  speed: 0.024, tilt: 0.03,
-    texture: "/textures/mercury.jpg", emissive: "#251a0e",
+    texture: "./textures/mercury.jpg", emissive: "#251a0e",
     fact: "¿Sabías que Mercurio completa una vuelta al Sol en solo 88 días? Así de rápido latió mi corazón la primera vez que te vi, Milvia.",
     phrase: "Así como Mercurio se mueve sin parar, tú llevas energía y vida a todo lo que tocas, Milvia.",
     sub: "Rápida, brillante e inigualable. 🌟"
@@ -28,7 +28,7 @@ const planetData = [
   {
     name: "Venus", emoji: "♀", color: "#f0d090",
     radius: 0.86, distance: 8.2,  speed: 0.018, tilt: 0.05,
-    texture: "/textures/venus.jpg", emissive: "#3a2000",
+    texture: "./textures/venus.jpg", emissive: "#3a2000",
     fact: "¿Sabías que Venus es el planeta más brillante del cielo nocturno? Igual que tú, que iluminas cualquier lugar al que entras, mi niña.",
     phrase: "Como Venus, tú eres lo primero que brilla y lo último en apagarse. Eres la más hermosa de mi universo.",
     sub: "Venus eres tú, mi niña preciosa. ✨"
@@ -36,7 +36,7 @@ const planetData = [
   {
     name: "Tierra", emoji: "🌍", color: "#4a88f5",
     radius: 0.92, distance: 11.0, speed: 0.014, tilt: 0.41,
-    texture: "/textures/earth.jpg", emissive: "#001025",
+    texture: "./textures/earth.jpg", emissive: "#001025",
     fact: "¿Sabías que la Tierra es el único planeta con vida en todo el universo conocido? Así de única y especial eres tú para mí, Milvia.",
     phrase: "Igual que la Tierra es única en el universo, tú eres única en mi vida. Contigo siento que estoy en casa, Milvia.",
     sub: "Mi hogar no es un lugar, eres tú. 💙"
@@ -44,7 +44,7 @@ const planetData = [
   {
     name: "Marte", emoji: "♂", color: "#d9593a",
     radius: 0.63, distance: 13.8, speed: 0.011, tilt: 0.44,
-    texture: "/textures/mars.jpg", emissive: "#2e0a00",
+    texture: "./textures/mars.jpg", emissive: "#2e0a00",
     fact: "¿Sabías que Marte tiene el volcán más alto del sistema solar? Así de imparable e incontenible es la fuerza que tú llevas dentro, Milvia.",
     phrase: "Como ese volcán imparable, así es tu fuerza, Milvia. Tu valentía me enamora más cada día que pasa.",
     sub: "Eres guerrera, mi vida. 🔥"
@@ -52,7 +52,7 @@ const planetData = [
   {
     name: "Júpiter", emoji: "♃", color: "#d8b07a",
     radius: 1.72, distance: 17.8, speed: 0.0085, tilt: 0.05,
-    texture: "/textures/jupiter.jpg", emissive: "#201000",
+    texture: "./textures/jupiter.jpg", emissive: "#201000",
     fact: "¿Sabías que dentro de Júpiter cabrían 1,300 planetas Tierra? Pues así de grande, y aún más, es el amor que siento por ti, Milvia.",
     phrase: "Así de grande es el amor que te tengo, Milvia. Tu corazón enorme y lleno de amor me hace el hombre más afortunado.",
     sub: "Gigante y poderosa, como tu amor. 🪐"
@@ -60,7 +60,7 @@ const planetData = [
   {
     name: "Saturno", emoji: "♄", color: "#e8d090",
     radius: 1.45, distance: 22.0, speed: 0.0065, tilt: 0.47,
-    texture: "/textures/saturn.jpg", emissive: "#1e1400",
+    texture: "./textures/saturn.jpg", emissive: "#1e1400",
     rings: true,
     fact: "¿Sabías que los anillos de Saturno son únicos en todo el sistema solar? Igual que tú, que tienes algo que nadie más tiene en este mundo, mi Milvia.",
     phrase: "Como Saturno, tú tienes algo que nadie más tiene. Hasta cuando me dices malcriadooo me derrites, Milvia.",
@@ -69,7 +69,7 @@ const planetData = [
   {
     name: "Urano", emoji: "⛢", color: "#7dd8d8",
     radius: 1.10, distance: 26.5, speed: 0.0048, tilt: 1.71,
-    texture: "/textures/uranus.jpg", emissive: "#002828",
+    texture: "./textures/uranus.jpg", emissive: "#002828",
     fact: "¿Sabías que Urano gira completamente de lado? Así también tú ves la vida diferente a todos, y esa manera tuya de ser es lo que más me enamora.",
     phrase: "Tú también ves el mundo diferente a todos, y eso me fascina. Tu manera de cuidarme es algo que no encuentro en ningún lugar.",
     sub: "Diferente, especial e irrepetible. 🩵"
@@ -77,7 +77,7 @@ const planetData = [
   {
     name: "Neptuno", emoji: "♆", color: "#4a6aff",
     radius: 1.06, distance: 30.5, speed: 0.0038, tilt: 0.49,
-    texture: "/textures/neptune.jpg", emissive: "#00003a",
+    texture: "./textures/neptune.jpg", emissive: "#00003a",
     fact: "¿Sabías que Neptuno tiene vientos de hasta 2,100 km/h, los más fuertes del sistema solar? Y aun así, cuando estoy contigo todo se calma. Eres mi paz, Milvia.",
     phrase: "Aunque el universo entero se mueva con fuerza, en tus ojos yo siempre encuentro calma, paz y nuestro futuro, Milvia.",
     sub: "Eres mi norte, mi profundidad y mi calma. 💙"
@@ -88,16 +88,16 @@ const planetData = [
    PHOTO SECTION
 ══════════════════════════════════════════ */
 const photoContent = [
-  { src: "/photos/1-image-1772974188959.png",           title: "Tu fuerza",       text: "Me encanta cómo peleas por lo que quieres y nunca te rindes. Esa determinación me enamora." },
-  { src: "/photos/2-image-1772974244006.png",           title: "Cómo me cuidas",  text: "Tu manera de cuidarme es uno de los regalos más bonitos que tengo en mi vida." },
-  { src: "/photos/3-image-1772974292039.png",           title: "Tu ternura",      text: "Tu dulzura hace que todo en mi día se sienta más bonito y liviano." },
-  { src: "/photos/4-image-1772974346919.png",           title: "Tu mirada",       text: "Tus ojos tienen un brillo que me deja sin palabras cada vez que te miro." },
-  { src: "/photos/5-image-1772974360453.png",           title: "Tu alegría",      text: "Tu risa es mi sonido favorito en este universo entero." },
-  { src: "/photos/6-image-1772974434583.png",           title: "Tu estilo",       text: "Eres hermosa de una forma tan única y auténtica que no puedo evitar admirarte." },
-  { src: "/photos/7-image-resized-1772974461695.webp",  title: "Tu corazón",      text: "Siempre piensas en los demás. Eso te hace una persona gigante y especial." },
-  { src: "/photos/8-image-1772974478202.png",           title: "Malcriadooo",     text: "Cuando me dices malcriadooo me derrites por completo. No lo cambio por nada. 😄" },
-  { src: "/photos/9-image-resized-1772974529470.webp",  title: "Tu magia",        text: "Tienes una vibra que convierte cualquier momento ordinario en algo especial." },
-  { src: "/photos/10-image-1772974698683.png",          title: "Tú, completa",    text: "Eres mi niña hermosa, mi orgullo, mi tranquilidad y mi universo entero." }
+  { src: "./photos/1-image-1772974188959.png",           title: "Tu fuerza",       text: "Me encanta cómo peleas por lo que quieres y nunca te rindes. Esa determinación me enamora." },
+  { src: "./photos/2-image-1772974244006.png",           title: "Cómo me cuidas",  text: "Tu manera de cuidarme es uno de los regalos más bonitos que tengo en mi vida." },
+  { src: "./photos/3-image-1772974292039.png",           title: "Tu ternura",      text: "Tu dulzura hace que todo en mi día se sienta más bonito y liviano." },
+  { src: "./photos/4-image-1772974346919.png",           title: "Tu mirada",       text: "Tus ojos tienen un brillo que me deja sin palabras cada vez que te miro." },
+  { src: "./photos/5-image-1772974360453.png",           title: "Tu alegría",      text: "Tu risa es mi sonido favorito en este universo entero." },
+  { src: "./photos/6-image-1772974434583.png",           title: "Tu estilo",       text: "Eres hermosa de una forma tan única y auténtica que no puedo evitar admirarte." },
+  { src: "./photos/7-image-resized-1772974461695.webp",  title: "Tu corazón",      text: "Siempre piensas en los demás. Eso te hace una persona gigante y especial." },
+  { src: "./photos/8-image-1772974478202.png",           title: "Malcriadooo",     text: "Cuando me dices malcriadooo me derrites por completo. No lo cambio por nada. 😄" },
+  { src: "./photos/9-image-resized-1772974529470.webp",  title: "Tu magia",        text: "Tienes una vibra que convierte cualquier momento ordinario en algo especial." },
+  { src: "./photos/10-image-1772974698683.png",          title: "Tú, completa",    text: "Eres mi niña hermosa, mi orgullo, mi tranquilidad y mi universo entero." }
 ];
 
 photoContent.forEach((item) => {
@@ -358,7 +358,7 @@ function createSolarSystem() {
   /* ── Sun ── */
   const loader = new THREE.TextureLoader();
   let sunTex;
-  loader.load("/textures/sun.jpg",
+  loader.load("./textures/sun.jpg",
     (t) => { t.colorSpace = THREE.SRGBColorSpace; sunTex = t; sunMesh.material.map = t; sunMesh.material.needsUpdate = true; },
     undefined,
     () => { sunMesh.material.map = makeSunTexture(); sunMesh.material.needsUpdate = true; }
@@ -447,7 +447,7 @@ function createSolarSystem() {
         color: 0xd4b896, side: THREE.DoubleSide,
         transparent: true, opacity: 0.70, roughness: 1, metalness: 0
       });
-      loader.load("/textures/saturn_ring.png",
+      loader.load("./textures/saturn_ring.png",
         (t) => { t.colorSpace = THREE.SRGBColorSpace; rMat.map = t; rMat.alphaMap = t; rMat.needsUpdate = true; }
       );
       const rMesh = new THREE.Mesh(rGeo, rMat);
